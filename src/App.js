@@ -6,10 +6,8 @@ function App() {
       <h1>React Calculator</h1>
       <div className="container">
         <div className="output">
-          <div className="previous-operand">
-            6609809809809809098098098098098098
-          </div>
-          <div className="current-operand">7700000000000000</div>
+          <div className="previous-operand">6608 *</div>
+          <div className="current-operand">77</div>
         </div>
         <button className="span-two">AC</button>
         <button>DEL</button>
