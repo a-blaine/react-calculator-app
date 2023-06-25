@@ -1,31 +1,33 @@
 import "./App.css";
-import React, { useReducer } from "react";
+import { useReducer } from "react";
+import DigitButton from "./DigitButton";
+
+export const actions = {
+  add: "add-digit",
+  clear: "clear",
+  delete: "delete-digit",
+  select: "choose-operation",
+  evaluate: "evaluate",
+};
+
+function reducer(state, { type, payload }) {
+  switch (type) {
+    case actions.add:
+      return {
+        ...state,
+        currentOperand: `${currentOperand || ""}${payload.digit}`,
+      };
+  }
+}
+
+let currentOperand = 4;
 
 function App() {
-  const actions = {
-    add: "add-digit",
-    clear: "clear",
-    delete: "delete-digit",
-    select: "choose-operation",
-    evaluate: "evaluate",
-  };
-
-  function reducer(state, { type, payload }) {
-    switch (type) {
-      case actions.add:
-        return {
-          ...state,
-          currentOperand: `${currentOperand || ""}${payload.digit}`,
-        };
-    }
-  }
-
   const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(
     reducer,
     {}
   );
 
-  dispatch({ type: actions.add, payload: { digit: 1 } });
   return (
     <div className="App">
       <h1>React Calculator</h1>
@@ -38,7 +40,7 @@ function App() {
         </div>
         <button className="span-two">AC</button>
         <button>DEL</button>
-        <button>÷</button>
+        <DigitButton digit="÷" dispatch={dispatch} />
 
         <button>1</button>
         <button>2</button>
