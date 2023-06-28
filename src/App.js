@@ -96,14 +96,18 @@ function reducer(state, { type, payload }) {
         ...state,
         currentOperand: state.currentOperand.slice(0, -1),
       };
+
+    default:
+      return null;
   }
 }
 
 function evaluate({ previousOperand, currentOperand, operation }) {
   const previous = parseFloat(previousOperand);
   const current = parseFloat(currentOperand);
-  if (isNaN(previous) || isNaN(current)) return "";
-
+  if (isNaN(previous) || isNaN(current)) {
+    return " ";
+  }
   let computation = "";
 
   switch (operation) {
@@ -119,6 +123,8 @@ function evaluate({ previousOperand, currentOperand, operation }) {
     case "-":
       computation = previous - current;
       break;
+    default:
+      return null;
   }
   return computation.toString();
 }
