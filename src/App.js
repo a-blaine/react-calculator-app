@@ -148,8 +148,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>React Calculator</h1>
-      <div className="container">
+      <div className="calculator">
         <div className="output">
           <div className="previous-operand">
             {formatInputNumber(previousOperand)} {operation}
